@@ -16,8 +16,12 @@ function GridCell(){
 
 
 function GridRow(){
+  var style = {
+    display:'flex'
+  }
+   
   return (
-    <div>
+    <div style = {style}>
       <GridCell/>
       <GridCell/>
       <GridCell/>
@@ -25,4 +29,25 @@ function GridRow(){
   )
 }
 
-export default GridRow;
+
+function Grid() {
+  return (
+    <div>
+      <GridRow/>
+      <GridRow/>
+      <GridRow/>      
+    </div>
+  )
+}
+
+
+class Game extends React.Component{
+  constructor(props){
+    super(props)
+  }
+  render(){
+    return(<Grid/>)
+  }
+}
+
+export default Game;
