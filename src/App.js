@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 function GridCell(props){
@@ -52,7 +51,31 @@ class Game extends React.Component{
     for(let i = 0; i < 20; i++){
       grid.push(new Array(30).fill('red'))
     }
-    this.state = {grid:grid}
+    var bird = {
+      height:10,
+      position:2
+    }
+    grid[bird.height][bird.position] = 'yellow' 
+    this.state = {grid:grid,bird:bird}
+    this.timerID = setInterval(() =>{
+      var gridCopy = []
+      for(let i = 0; i < 20; i++){
+        gridCopy.push(new Array(30).fill('red')) 
+      }
+      var birdCopy = this.state.bird
+      birdCopy.height++
+      if(birdCopy.height > 19 || birdCopy.height < 0){
+        birdCopy.height = 10
+      }
+      gridCopy[birdCopy.height][birdCopy.position] = 'yellow'
+
+
+
+      this.setState({grid:gridCopy,bird:birdCopy})
+
+
+
+          },200)
   }
   render(){
     return(
