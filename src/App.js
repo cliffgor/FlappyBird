@@ -55,12 +55,51 @@ class Game extends React.Component{
       height:10,
       position:2
     }
+    var towers = [
+      {position:3,height:5,upright:true},
+      {position:7,height:8,upright:false},
+      {position:10,height:7,upright:true},
+      {position:14,height:6,upright:false},
+      {position:29,height:4,upright:true},
+      {position:18,height:5,upright:false},
+      {position:26,height:7,upright:true},
+      {position:18,height:10,upright:false}
+    ]
+
+
+
+
     grid[bird.height][bird.position] = 'yellow' 
-    this.state = {grid:grid,bird:bird}
+    this.state = {grid:grid,bird:bird, towers:towers}
     this.timerID = setInterval(() =>{
       var gridCopy = []
+      var towersCopy = this.state.towers.slice()
       for(let i = 0; i < 20; i++){
         gridCopy.push(new Array(30).fill('red')) 
+      }
+
+// decremented towers to move by 1 from right to left
+      for(let i = 0; i < towersCopy.length; i++){
+        towersCopy[i].position--
+        if(towersCopy[i].position < 0){
+          towersCopy[i].position = 29
+          towersCopy[i].height = Math.floor(Math.random()*7) + 3
+        }
+      }
+
+
+
+
+// checks if the towers are upright either true or false
+      for(let i = 0; i < towersCopy.length; i++){
+        for (let j = 0; j < towersCopy[i].height; j++){
+          if(towersCopy[i].upright)
+            gridCopy[19-j][towersCopy[i].position] = 'blue'
+          else
+          gridCopy[j][towersCopy[i].position] = 'blue'
+
+
+        }
       }
       var birdCopy = this.state.bird
       birdCopy.height++
