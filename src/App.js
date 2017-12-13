@@ -70,7 +70,7 @@ class Game extends React.Component{
 
 
     grid[bird.height][bird.position] = 'yellow' 
-    this.state = {grid:grid,bird:bird, towers:towers, crashed:false}
+    this.state = {grid:grid,bird:bird, towers:towers, crashed:false, score:0}
     this.timerID = setInterval(() =>{
       if(this.state.crashed)
       return
@@ -126,7 +126,7 @@ class Game extends React.Component{
 
 
 
-      this.setState({grid:gridCopy,bird:birdCopy, towers:towersCopy})
+      this.setState({grid:gridCopy,bird:birdCopy, towers:towersCopy, score:this.state.score + 1})
 
 
 
@@ -140,13 +140,13 @@ class Game extends React.Component{
     this.setState({bird:birdCopy})
   }
   restart(){
-    this.setState({crashed:false})
+    this.setState({crashed:false, score:0})
   }
   render(){
     return(
   <div onClick = {this.handleClick.bind(this)}>
     <Grid grid = {this.state.grid}/>
-    {this.state.crashed? <button onClick = {this.restart.bind(this)}>Click here to restart the game....</button> : null}
+    {this.state.crashed? <button onClick = {this.restart.bind(this)}>Click here to restart the game....</button> : this.state.score}
   </div>)
   }
 }
