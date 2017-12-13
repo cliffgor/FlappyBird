@@ -106,11 +106,18 @@ class Game extends React.Component{
       if(birdCopy.height > 19 || birdCopy.height < 0){
         birdCopy.height = 10
       }
+
+      // a loop to make a collision whenever the bird hits a blue tower it resets
+      for(let i =0; i < 20; i++){
+        if(gridCopy[i][2] === 'blue' && birdCopy.height === i){
+          birdCopy.height = 10
+        }
+      }
       gridCopy[birdCopy.height][birdCopy.position] = 'yellow'
 
 
 
-      this.setState({grid:gridCopy,bird:birdCopy})
+      this.setState({grid:gridCopy,bird:birdCopy, towers:towersCopy})
 
 
 
