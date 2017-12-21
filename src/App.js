@@ -61,7 +61,7 @@ class Game extends React.Component{
       {position:10,height:7,upright:true},
       {position:14,height:6,upright:false},
       {position:20,height:4,upright:true},
-      {position:18,height:9,upright:false},
+      {position:18,height:7,upright:false},
       {position:26,height:7,upright:true},
       {position:10,height:28,upright:false},
       {position:1,height:1,upright:true},
