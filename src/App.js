@@ -60,10 +60,15 @@ class Game extends React.Component{
       {position:7,height:8,upright:false},
       {position:10,height:7,upright:true},
       {position:14,height:6,upright:false},
-      {position:29,height:4,upright:true},
-      {position:18,height:5,upright:false},
+      {position:20,height:4,upright:true},
+      {position:18,height:9,upright:false},
       {position:26,height:7,upright:true},
-      {position:18,height:10,upright:false}
+      {position:10,height:28,upright:false},
+      {position:1,height:1,upright:true},
+      {position:6,height:28,upright:false},
+      {position:5,height:7,upright:true},
+      {position:8,height:19,upright:false},
+      {position:16,height:10,upright:ture}
     ]
 
 
